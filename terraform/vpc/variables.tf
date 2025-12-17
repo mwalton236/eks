@@ -15,3 +15,9 @@ variable "vpc_name" {
   type        = string
   default     = "dev-vpc"
 }
+
+variable "azs" {
+  description = "enabled AZs"
+  type = list(string)
+  default = ["a","b","c"]
+}

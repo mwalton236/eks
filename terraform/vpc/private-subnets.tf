@@ -1,9 +1,9 @@
 resource "aws_subnet" "private" {
-  for_each = local.private_subnets
+  for_each = toset(local.availability_zones)
 
   vpc_id            = aws_vpc.vpc.id
-  cidr_block        = each.value.cidr_block
-  availability_zone = each.value.availability_zone_name
+  cidr_block        = cidrsubnet(var.vpc_cidr_block, 4, index(local.availability_zones, each.key) + 10)
+  availability_zone = each.key
 
   tags = {
     Name = "private_${each.key}"
