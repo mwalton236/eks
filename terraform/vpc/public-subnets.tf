@@ -6,8 +6,9 @@ resource "aws_subnet" "public" {
   availability_zone = each.key
 
   tags = {
-    Name = "public_${each.key}"
-    VPC  = var.vpc_name
+    Name                     = "public_${each.key}"
+    VPC                      = var.vpc_name
+    "kubernetes.io/role/elb" = 1
   }
 }
 

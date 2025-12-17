@@ -4,7 +4,7 @@
 
 locals {
   availability_zones = [
-    for zone in var.azs:
-          format("%s%s", var.region, zone)
+    for zone in var.azs :
+    format("%s%s", var.region, zone)
   ]
 }
